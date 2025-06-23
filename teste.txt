@@ -1,1 +1,1 @@
-https://registro.cefet-rj.br/
+https://github.com/rafahcs/qrcodeGo
