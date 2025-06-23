@@ -3,6 +3,7 @@ package main
 
 import (
 	"io/ioutil"	
+	"image/color"
 	"log"
 	"os"
 	"fmt"
@@ -16,6 +17,9 @@ type QRConfig struct {
 	Text               string
 	Size               int
 	RecoveryLevel	  qrcode.RecoveryLevel
+	ForegroundColor    color.RGBA
+	BackgroundColor    color.RGBA
+	
 }
 
 func main() {
@@ -25,6 +29,8 @@ func main() {
 		OutputFile:      "custom-qr.png",
 		Size:            512,
 		RecoveryLevel:   qrcode.Medium,
+		ForegroundColor: color.RGBA{0, 0, 0, 255},       // Preto
+		BackgroundColor: color.RGBA{255, 255, 255, 255}, // Branco
 	}
 
 	// Leitura de argumentos ou pode ser modificado para ler de arquivo de configuração
@@ -72,10 +78,33 @@ func parseConfig(args []string) QRConfig {
 		case "-lvl":
 			config.RecoveryLevel = parseRecoveryLevel(args[i+1])	// Nível de recuperação
 			i++
+		case "-fg":
+			config.ForegroundColor = parseColor(args[i+1])
+			i++
+		case "-bg":
+			config.BackgroundColor = parseColor(args[i+1])
+			i++
 		}
 	}
 
 	return config
+}
+
+func parseColor(hex string) color.RGBA {
+	if len(hex) != 6 && len(hex) != 8 {
+		return color.RGBA{0, 0, 0, 255}
+	}
+
+	r, _ := strconv.ParseUint(hex[0:2], 16, 8)
+	g, _ := strconv.ParseUint(hex[2:4], 16, 8)
+	b, _ := strconv.ParseUint(hex[4:6], 16, 8)
+	a := uint8(255)
+	if len(hex) == 8 {
+		a64, _ := strconv.ParseUint(hex[6:8], 16, 8)
+		a = uint8(a64)
+	}
+
+	return color.RGBA{R: uint8(r), G: uint8(g), B: uint8(b), A: uint8(a)}
 }
 
 func parseRecoveryLevel(level string) qrcode.RecoveryLevel {
@@ -102,6 +131,11 @@ func generateCustomQR(config QRConfig) error {
 	if err != nil {
 		return err
 	}
+
+	// Configurações de cor
+	q.ForegroundColor = config.ForegroundColor
+	q.BackgroundColor = config.BackgroundColor
+
 
 	// Gera a imagem final
 	return q.WriteFile(config.Size, config.OutputFile)
