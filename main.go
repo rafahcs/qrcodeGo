@@ -113,10 +113,8 @@ func parseRecoveryLevel(level string) qrcode.RecoveryLevel {
 		return qrcode.Low
 	case "M":
 		return qrcode.Medium
-	case "Q":
-		return qrcode.High
 	case "H":
-		return qrcode.Highest
+		return qrcode.High
 	default:
 		return qrcode.Medium
 	}
