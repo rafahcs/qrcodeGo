@@ -2,6 +2,8 @@
 
 Gerador de QR code com a linguagem Golang
 
+Baseado no pacote [go-qrcode](https://github.com/skip2/go-qrcode)
+
 # Como rodar
 ```bash
 go run . -i <InputFile> -o <OutputFile> -s <Size> -fg <ForegroundColor> -bg <BackgroundColor> -lvl <RecoveryLevel>
@@ -12,12 +14,12 @@ go run . -i <InputFile> -o <OutputFile> -s <Size> -fg <ForegroundColor> -bg <Bac
 * Size: tamanho da imagem 
 * ForegroundColor: cor do desenho do código em hexadecimal 
 * BackgroundColor: cor do fundo da imagem em hexadecimal 
-* RecoveryLevel: posicionamento em relação a janela da imagem
+* RecoveryLevel: posicionamento em relação a janela da imagem (L: abaixo, M: centralizado, H: Acima)
 
 Exemplo:
 * QR code preto-branco  
 ```bash
- go run . -i teste.txt -o preto-branco.png -s 256 -fg 000000 -bg FFFFFF -lvl H
+ go run . -i teste.txt -o preto-branco.png -s 256 -fg 000000 -bg FFFFFF -lvl M
 ```
 
 ![preto-branco](https://github.com/user-attachments/assets/1b9042cf-22ea-4b03-8c17-f5cbf68cdb45)
@@ -25,7 +27,7 @@ Exemplo:
 
 * QR code verde-amarelo  
 ```bash
-go run . -i teste.txt -o verde-amarelo.png -s 128 -fg 008000 -bg FFFF00  -lvl H
+go run . -i teste.txt -o verde-amarelo.png -s 128 -fg 008000 -bg FFFF00  -lvl L
 ```
 
 ![verde-amarelo](https://github.com/user-attachments/assets/811210e8-efdd-4d38-90d6-c97d099c1b3e)
