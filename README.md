@@ -5,9 +5,9 @@ Gerador de QR code com a linguagem Golang
 Baseado no pacote [go-qrcode](https://github.com/skip2/go-qrcode)
 
 # Como rodar
-```bash
+``
 go run . -i <InputFile> -o <OutputFile> -s <Size> -fg <ForegroundColor> -bg <BackgroundColor> -lvl <RecoveryLevel>
-```
+``
 
 * InputFile: nome do arquivo .txt com o link do QR code
 * OutputFile: nome no arquivo .png com a imagem do QR code
