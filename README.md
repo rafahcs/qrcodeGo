@@ -1,6 +1,6 @@
 # QR Code em Go
 
-Gerador de QR code com a linguagem Golang
+Gerador de QR code com a linguagem Golang("Go")
 
 Baseado no pacote [go-qrcode](https://github.com/skip2/go-qrcode)
 
