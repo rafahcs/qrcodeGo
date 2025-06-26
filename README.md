@@ -14,7 +14,7 @@ go run . -i <InputFile> -o <OutputFile> -s <Size> -fg <ForegroundColor> -bg <Bac
 * Size: tamanho da imagem 
 * ForegroundColor: cor do desenho do código em hexadecimal 
 * BackgroundColor: cor do fundo da imagem em hexadecimal 
-* RecoveryLevel: posicionamento em relação a janela da imagem (L: abaixo, M: centralizado, H: Acima)
+* RecoveryLevel: nível de qualidade de leitura do qr-code (L: low, M: medium, H: high)
 
 Exemplo:
 * QR code preto-branco  
