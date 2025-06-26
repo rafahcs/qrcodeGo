@@ -59,7 +59,6 @@ func main() {
 func parseConfig(args []string) QRConfig {
 	config := QRConfig{}
 
-	// Implementação simplificada - em produção, usar flag package ou viper
 	for i := 1; i < len(args); i++ {
 		switch args[i] {
 		case "-i":
@@ -79,10 +78,10 @@ func parseConfig(args []string) QRConfig {
 			config.RecoveryLevel = parseRecoveryLevel(args[i+1])	// Nível de recuperação
 			i++
 		case "-fg":
-			config.ForegroundColor = parseColor(args[i+1])
+			config.ForegroundColor = parseColor(args[i+1])	// Cor do primeiro plano
 			i++
 		case "-bg":
-			config.BackgroundColor = parseColor(args[i+1])
+			config.BackgroundColor = parseColor(args[i+1])	// Cor do fundo
 			i++
 		}
 	}
