@@ -1,4 +1,4 @@
-# QR Code em Golang
+# QR Code em Go
 
 Gerador de QR code com a linguagem Golang
 
